@@ -48,12 +48,15 @@ const ShareEnd = document.querySelector(".ShareEnd");
 const user = document.querySelector("#user");
 
 const userRole = localStorage.getItem("myUserRole");
+console.log(userRole);
 const progressBar = document.getElementById("progress-bar");
 const level = document.getElementById("level");
 
 const welcome = document.querySelector(".Welcome");
 const userr = localStorage.getItem("myCode");
 console.log(userr);
+welcome.innerHTML = `Welcome ${userr}!`;
+
 
 // loading card
 
@@ -380,7 +383,6 @@ async function display(value) {
 window.addEventListener("load", function () {
   const savedProgressBarWidth = sessionStorage.getItem("progressBar");
   const savedLevel = sessionStorage.getItem("level");
-  welcome.innerHTML = `Welcome ${userr}!`;
 
   if (savedProgressBarWidth) {
     progressBar.style.width = savedProgressBarWidth;
@@ -1022,76 +1024,77 @@ appBtn.addEventListener("click", () => {
   }
 });
 
-// const id = sessionStorage.getItem('idToPass');
-
-// function checkIdAndDisableButton() {
-//   if (id) {
-//     appBtn.disabled = false;
-//   } else {
-//     appBtn.disabled = true;
-//   }
-// }
-
-// window.addEventListener('DOMContentLoaded', checkIdAndDisableButton);
-
-// window.addEventListener('storage', function (e) {
-//   if (e.key === id) {
-//     id = e.newValue;
-//     checkIdAndDisableButton();
-//   }
-// });
-
-// window.addEventListener("popstate", function(event) {
-//   sessionStorage.clear();
-//   localStorage.clear();
-// });
-
-// let params = {};
-// let regex = /([^&=]+)=([^&]*)/g, m;
-// while (m = regex.exec(location.href)){
-//   params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-// }
-
-// if (Object.keys(params).length > 0) {
-//   localStorage.setItem('authInfo', JSON.stringify(params));
-// }
-
-// // hide the access token
-// if (window.history && window.history.pushState) {
-//   window.history.pushState({}, document.title, "/SRM.html");
-// } else {
-//   window.location.replace("/SRM.html");
-// }
-
-// let info = JSON.parse(localStorage.getItem('authInfo'));
-// console.log(JSON.parse(localStorage.getItem('authInfo')));
-// console.log(info['access_token']);
-// console.log(info['expires_in']);
-
-// console.log(user);
-
-// const trace = document.createElement("h1");
-
-// trace.classList.add("success" , "alert");
-// trace.style.width = "25%";
-
-// trace.style.zIndex = "1";
-
-// const storage = sessionStorage.getItem("searchBtn");
-
-// console.log(storage)
-
-// trace.innerHTML = storage;
-
-// document.body.appendChild(trace);
 
 window.addEventListener("load", function () {
-  if (
-    localStorage.getItem("myCode") === "" ||
-    localStorage.getItem("myCode") === null
+    if (
+        localStorage.getItem("myCode") === "" ||
+        localStorage.getItem("myCode") === null
   ) {
     // Redirect to index.html
     window.location.href = "index.html";
   }
 });
 
+
+    // const id = sessionStorage.getItem('idToPass');
+    
+    // function checkIdAndDisableButton() {
+    //   if (id) {
+    //     appBtn.disabled = false;
+    //   } else {
+    //     appBtn.disabled = true;
+    //   }
+    // }
+    
+    // window.addEventListener('DOMContentLoaded', checkIdAndDisableButton);
+    
+    // window.addEventListener('storage', function (e) {
+    //   if (e.key === id) {
+    //     id = e.newValue;
+    //     checkIdAndDisableButton();
+    //   }
+    // });
+    
+    // window.addEventListener("popstate", function(event) {
+    //   sessionStorage.clear();
+    //   localStorage.clear();
+    // });
+    
+    // let params = {};
+    // let regex = /([^&=]+)=([^&]*)/g, m;
+    // while (m = regex.exec(location.href)){
+    //   params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    // }
+    
+    // if (Object.keys(params).length > 0) {
+    //   localStorage.setItem('authInfo', JSON.stringify(params));
+    // }
+    
+    // // hide the access token
+    // if (window.history && window.history.pushState) {
+    //   window.history.pushState({}, document.title, "/SRM.html");
+    // } else {
+    //   window.location.replace("/SRM.html");
+    // }
+    
+    // let info = JSON.parse(localStorage.getItem('authInfo'));
+    // console.log(JSON.parse(localStorage.getItem('authInfo')));
+    // console.log(info['access_token']);
+    // console.log(info['expires_in']);
+    
+    // console.log(user);
+    
+    // const trace = document.createElement("h1");
+    
+    // trace.classList.add("success" , "alert");
+    // trace.style.width = "25%";
+    
+    // trace.style.zIndex = "1";
+    
+    // const storage = sessionStorage.getItem("searchBtn");
+    
+    // console.log(storage)
+    
+    // trace.innerHTML = storage;
+    
+    // document.body.appendChild(trace);

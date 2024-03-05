@@ -499,6 +499,7 @@ jQuery("#frmSubmit").on("submit", function (e) {
       }, 10);
       setTimeout(function () {
         alertMsg.style.display = "none";
+        location.reload();
       }, 2000);
     },
     error: function () {
@@ -522,6 +523,10 @@ jQuery("#frmSubmit").on("submit", function (e) {
     },
     complete: function () {
       jQuery("#spinner-container").empty();
+      jQuery("#exampleModal").modal("hide");
+      $("#exampleModal").on("hidden.bs.modal", function (e) {
+        $(".modal-backdrop").remove();
+      });
     },
   });
 });
@@ -532,6 +537,7 @@ payBtnInvoice.addEventListener("click", () => {
   const ScholarshipToPass = sessionStorage.getItem("ScholarshipToPass");
   const ReceptionistToPass = sessionStorage.getItem("ReceptionistToPass");
   const groupToPass = sessionStorage.getItem("groupToPass");
+  const userr = localStorage.getItem("myCode");
 
   console.log(id, ScholarshipToPass, ReceptionistToPass, groupToPass);
 
@@ -541,12 +547,14 @@ payBtnInvoice.addEventListener("click", () => {
   const Reception = document.querySelector("#Reception");
   const fresh = document.querySelector("#fresh");
   const StudyType = document.querySelector("#StudyType");
+  const EmployeeInvoice = document.querySelector("#EmployeeInvoice");
 
   // Set the value of the "SelectDueDate" element to the due date of the student in the current row.
   StudentNUM.value = id;
   Scholarship.value = ScholarshipToPass;
   Reception.value = ReceptionistToPass;
   StudyType.value = groupToPass;
+  EmployeeInvoice.value = userr;
   fresh.value = "Student";
 });
 
