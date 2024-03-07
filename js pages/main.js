@@ -645,6 +645,7 @@ const logOut = document.querySelector(".log_out");
 logOut.addEventListener("click", () => {
   sessionStorage.clear();
   localStorage.clear();
+  window.location.href = "/index.html";
 });
 
 //for pervent back btn of browser
