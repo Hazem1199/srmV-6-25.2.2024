@@ -62,10 +62,15 @@ async function displayTasks() {
   change();
 
   const reportedTasks = await getreportedTasks();
+  
 
+  
   console.log(reportedTasks.data);
 
   const tasks = await getTasks();
+
+  
+
 
   // if (!tasks || !Array.isArray(tasks)) {
   //   console.error("Invalid or undefined tasks array");
@@ -77,9 +82,8 @@ async function displayTasks() {
 
   const Dep = localStorage.getItem("myDepartment");
 
-  for (let i = 0; i < tasks.data.length; i++) {
-    var task = {
-      id: tasks.data[i].id,
+  for (let i = 0; i < tasks.data.length; i++ ) {
+    const task = {
       TaskNo: tasks.data[i].attributes.task_No,
       TaskName: `<a target="_blank" href="${tasks.data[i].attributes.task_des_link}">${tasks.data[i].attributes.task_Name}</a>`,
       Department: tasks.data[i].attributes.department,
@@ -92,7 +96,9 @@ async function displayTasks() {
       TimeBeforeEnd: tasks.data[i].attributes.Time_Bef_End,
     };
 
-    // console.log(task.id);
+    
+    
+    // console.log(typeof task.From);
 
     var newRow = document.createElement("tr");
 
@@ -162,6 +168,7 @@ async function displayTasks() {
     // console.log(timeVariance);
 
     const userr = localStorage.getItem("myCode");
+
 
     newRow.innerHTML = `
         <td class="text-center align-middle d-flex align-items-center">
@@ -362,7 +369,9 @@ async function displayTasks() {
     tableBody.appendChild(newRow);
   }
 
-  document.getElementById("frmTaskReport").addEventListener("submit", function (e) {
+  document
+    .getElementById("frmTaskReport")
+    .addEventListener("submit", function (e) {
       e.preventDefault();
 
       // Gather form data
@@ -371,6 +380,8 @@ async function displayTasks() {
       const Status = document.getElementById("selectStatus").value;
       const Range = document.getElementById("customRange2").value;
       const Note = document.getElementById("reportNote").value;
+
+      
 
       // Set up fetch options
       var requestOptions = {
@@ -391,32 +402,6 @@ async function displayTasks() {
         }),
       };
 
-      var requestUpdate = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer f2004377863e9d767b12ed40b2a996ff71343b463323b990160adf52f660493e20e77b5f368d4f510a3f9a0ccb3bb2cbed5b8c8a6800c63d768eed032bf0eeeb030cfab84d2167ca498673aeb6528147a103989c27e944e87768be0b2b6c65f5f8ad994a831150e8bce9bbf650261d17cf5f5db8e03182ea2faec183d1ec11de",
-        },
-        body: JSON.stringify({
-          data: {
-            emp: Employee,
-            task_completion: Range,
-            report: Status,
-            note: Note,
-          },
-        }),
-      };
-
-      fetch(`https://srm-vbc7.onrender.com/api/task-reports/${task.id}`, requestUpdate)
-        .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        console.log(response.json());
-        return response.json();
-      });
-
       // Display spinner
       var spinner =
         '<div class="text-center appSpi"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden"></span></div></div>';
@@ -428,7 +413,7 @@ async function displayTasks() {
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          // console.log(response.json());
+          console.log(response.json());
           return response.json();
         })
         .then((result) => {
